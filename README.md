@@ -3,6 +3,7 @@
 ![HTML5](https://img.shields.io/badge/HTML5-static-orange)
 ![CSS3](https://img.shields.io/badge/CSS3-styling-blue)
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)
+![Makefile](https://img.shields.io/badge/Makefile-automation-brightgreen?logo=gnu&logoColor=white)
 
 Сучасний веб-додаток для керування завданнями, побудований з акцентом на **Clean Architecture** та принципи **SOLID**. Проект демонструє ефективне поєднання React на фронтенді та Node.js з PostgreSQL на бекенді.
 
