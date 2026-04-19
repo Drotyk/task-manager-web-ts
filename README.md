@@ -1,56 +1,36 @@
-# Task Manager (TypeScript Rewrite)
+# Task Manager (Fullstack: React + Node.js + PostgreSQL)
 
-Цей проект є переписаною версією PHP-проекту `task-manager-web-lab-alg-main` на TypeScript із застосуванням принципів OOP та SOLID.
+Цей проект демонструє архітектуру **SOLID** та **Clean Architecture** у повнофункціональному веб-додатку.
 
-## Архітектура
+## 🏗 Архітектура
 
-Проект дотримується принципів чистої архітектури (Clean Architecture):
+- **Frontend**: React (Vite). Відповідає лише за відображення та запити до API.
+- **Backend**: Express.js. Використовує `PostgresTaskRepository` для роботи з базою даних.
+- **Database**: PostgreSQL.
 
-- **Domain**: Сутності та бізнес-правила (Task, TaskStatus). Не залежать від зовнішніх модулів.
-- **Ports (Interfaces)**: Визначають інтерфейси для взаємодії з інфраструктурою (ITaskRepository). (Dependency Inversion Principle).
-- **App (Service)**: Прикладна логіка. Використовує порти для роботи з даними.
-- **Infra**: Реалізація портів (SqliteTaskRepository). Використовує SQLite.
-- **Core**: Інструментарій для роботи застосунку (DI Container).
+## 🚀 Як запустити
 
-## SOLID
+1. **База даних**:
+   - Переконайтеся, що у вас встановлено PostgreSQL.
+   - Створіть базу даних `taskdb`.
 
-- **S (Single Responsibility)**: Кожен клас відповідає за свою частину (Repository - дані, Service - логіка, Controller/Index - HTTP).
-- **O (Open/Closed)**: Система відкрита для розширення (можна додати нові репозиторії), але закрита для модифікації ядра.
-- **L (Liskov Substitution)**: Реалізації `ITaskRepository` можуть бути замінені без порушення роботи сервісу.
-- **I (Interface Segregation)**: Інтерфейси розділені за призначенням.
-- **D (Dependency Inversion)**: `TaskService` залежить від інтерфейсу `ITaskRepository`, а не від конкретної реалізації SQLite.
+2. **Налаштування (.env)**:
+   Створіть файл `.env` у корені:
+   ```env
+   DATABASE_URL=postgresql://postgres:password@localhost:5432/taskdb
+   PORT=3001
+   ```
 
-## 🛠 Технологічний стек
-
-У проекті використано сучасний стек технологій для забезпечення надійності та швидкості розробки:
-
-- **Мова програмування**: [TypeScript](https://www.typescriptlang.org/) — забезпечує строгу типізацію та запобігає помилкам на етапі розробки.
-- **Runtime**: [Node.js](https://nodejs.org/) — серверна платформа для виконання коду.
-- **Веб-фреймворк**: [Express.js](https://expressjs.com/) — гнучкий фреймворк для побудови веб-додатків.
-- **База даних**: [SQLite](https://www.sqlite.org/) — надійна вбудована реляційна БД.
-- **Драйвер БД**: [better-sqlite3](https://github.com/WiseLibs/better-sqlite3) — високопродуктивна бібліотека для роботи з SQLite.
-- **Шаблонізатор**: [EJS](https://ejs.co/) — для динамічного рендерингу HTML на сервері.
-- **Інструменти розробки**:
-    - `ts-node` та `nodemon` — для швидкої розробки без ручної компіляції.
-    - `Makefile` — для автоматизації команд.
-
-## Як запустити
-
-1. Встановіть залежності:
+3. **Встановлення та запуск**:
    ```bash
    npm install
+   
+   # Запуск бекенду (термінал 1)
+   npm run dev:backend
+   
+   # Запуск фронтенду (термінал 2)
+   npm run dev:frontend
    ```
 
-2. Запустіть у режимі розробки:
-   ```bash
-   npm run dev
-   ```
-
-3. Або скомпілюйте та запустіть:
-   ```bash
-   npm run build
-   npm start
-   ```
-
-За замовчуванням сервер працює на `http://localhost:3000`.
-# task-manager-web-ts
+## ⚠️ Примітка щодо GitHub Pages
+GitHub Pages підтримує лише статичні сайти. Оскільки цей проект тепер вимагає PostgreSQL та Node.js бекенд, він **не буде працювати** на GitHub Pages повністю. Ви можете задеплоїти фронтенд на GH Pages, але бекенд та БД мають бути розміщені на сервісах типу Render або Railway.
