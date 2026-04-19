@@ -1,7 +1,8 @@
 #  Task Manager Fullstack
 
 ![HTML5](https://img.shields.io/badge/HTML5-static-orange)
-![CSS3](https://img.shields.io/badge/CSS3-styling-blue)
+![CSS3](https://img.shields.io/badge/CSS3-styling-blue)\
+![typescript](https://www.typescriptlang.org/)
 
 Сучасний веб-додаток для керування завданнями, побудований з акцентом на **Clean Architecture** та принципи **SOLID**. Проект демонструє ефективне поєднання React на фронтенді та Node.js з PostgreSQL на бекенді.
 
