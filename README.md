@@ -1,36 +1,103 @@
-# Task Manager (Fullstack: React + Node.js + PostgreSQL)
+# 📝 Task Manager Fullstack
 
-Цей проект демонструє архітектуру **SOLID** та **Clean Architecture** у повнофункціональному веб-додатку.
+Сучасний веб-додаток для керування завданнями, побудований з акцентом на **Clean Architecture** та принципи **SOLID**. Проект демонструє ефективне поєднання React на фронтенді та Node.js з PostgreSQL на бекенді.
 
-## 🏗 Архітектура
+---
 
-- **Frontend**: React (Vite). Відповідає лише за відображення та запити до API.
-- **Backend**: Express.js. Використовує `PostgresTaskRepository` для роботи з базою даних.
-- **Database**: PostgreSQL.
+## ✨ Особливості
 
-## 🚀 Як запустити
+- **Повний CRUD**: Створення, перегляд, оновлення статусу та видалення завдань.
+- **Чиста Архітектура**: Чіткий поділ на шари (Domain, Application, Infrastructure, Ports).
+- **Dependency Injection**: Власний контейнер для керування залежностями.
+- **Type Safety**: Повна підтримка TypeScript на обох кінцях стеку.
+- **Modern UI**: Мінімалістичний та адаптивний інтерфейс на Vanilla CSS.
 
-1. **База даних**:
-   - Переконайтеся, що у вас встановлено PostgreSQL.
-   - Створіть базу даних `taskdb`.
+## 🛠 Технологічний стек
 
-2. **Налаштування (.env)**:
-   Створіть файл `.env` у корені:
-   ```env
-   DATABASE_URL=postgresql://postgres:password@localhost:5432/taskdb
-   PORT=3001
-   ```
+| Складник | Технології |
+| :--- | :--- |
+| **Frontend** | React 18, Vite, TypeScript |
+| **Backend** | Node.js, Express, ts-node |
+| **Database** | PostgreSQL, `pg` (node-postgres) |
+| **Architectural Patterns** | Repository Pattern, Dependency Injection, Domain Driven Design (elements) |
 
-3. **Встановлення та запуск**:
-   ```bash
-   npm install
-   
-   # Запуск бекенду (термінал 1)
-   npm run dev:backend
-   
-   # Запуск фронтенду (термінал 2)
-   npm run dev:frontend
-   ```
+---
 
-## ⚠️ Примітка щодо GitHub Pages
-GitHub Pages підтримує лише статичні сайти. Оскільки цей проект тепер вимагає PostgreSQL та Node.js бекенд, він **не буде працювати** на GitHub Pages повністю. Ви можете задеплоїти фронтенд на GH Pages, але бекенд та БД мають бути розміщені на сервісах типу Render або Railway.
+## 🏗 Архітектура проекту
+
+Проект організований за принципами шаруватої архітектури:
+
+- `src/Domain`: Ядро системи — сутності (`Task`) та бізнес-правила. Не залежить від фреймворків.
+- `src/Ports`: Інтерфейси для зовнішніх систем (наприклад, `ITaskRepository`).
+- `src/App`: Прикладний шар (Service) — оркестрація бізнес-логіки.
+- `src/Infra`: Реалізація портів (робота з БД, LocalStorage тощо).
+- `src/Core`: Допоміжні інструменти, як-от DI-контейнер.
+
+---
+
+## 🚀 Швидкий старт
+
+### 1. Попередні вимоги
+- Встановлений **Node.js** (v18+)
+- Запущений сервер **PostgreSQL**
+
+### 2. Налаштування бази даних
+Створіть базу даних (наприклад, `taskdb`) у вашому PostgreSQL:
+```sql
+CREATE DATABASE taskdb;
+```
+
+### 3. Конфігурація середовища
+Створіть файл `.env` у корені проекту:
+```env
+DATABASE_URL=postgresql://postgres:ВАШ_ПАРОЛЬ@localhost:5432/taskdb
+PORT=3001
+```
+
+### 4. Встановлення залежностей
+```bash
+npm install
+```
+
+### 5. Запуск проекту
+Вам знадобиться два термінали:
+
+**Термінал 1 (Бекенд):**
+```bash
+npm run dev:backend
+```
+
+**Термінал 2 (Фронтенд):**
+```bash
+npm run dev:frontend
+```
+
+Додаток буде доступний за адресою: [http://localhost:5173](http://localhost:5173)
+
+---
+
+## 📂 Структура папок
+
+```text
+├── src/
+│   ├── App/          # Application Layer (Services)
+│   ├── Core/         # Framework-agnostic core tools (DI Container)
+│   ├── Domain/       # Business Logic & Entities
+│   ├── Infra/        # Data Access & Implementation
+│   ├── Ports/        # Interfaces (Abstractions)
+│   ├── App.tsx       # UI Components
+│   ├── server.ts     # Express Server entry point
+│   └── main.tsx      # React entry point
+├── public/           # Static assets
+└── views/            # HTML templates
+```
+
+## ⚠️ Розгортання (Deployment)
+
+Цей проект використовує повноцінний бекенд та базу даних. Для деплою рекомендується:
+- **Frontend**: Vercel, Netlify або Cloudflare Pages.
+- **Backend**: Render, Railway або Fly.io.
+- **Database**: Managed PostgreSQL на Railway або Supabase.
+
+---
+⭐ *Цей проект створений для демонстрації навичок архітектурного проектування та розробки fullstack додатків.*
